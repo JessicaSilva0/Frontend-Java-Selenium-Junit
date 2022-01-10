@@ -1,7 +1,6 @@
 package ao.ui.portal.test.LoginPage;
 
 import ao.ui.utils.Utils;
-import ao.ui.portal.homePage.loginPage;
 import jdk.jfr.Description;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -12,7 +11,7 @@ import static ao.ui.portal.Application.driver;
 import static ao.ui.utils.Utils.User;
 import static ao.ui.utils.Utils.pass;
 
-public class LoginPageLoginInvalidoTest {
+public class loginPageTest {
 
     @BeforeClass
     public static void openBrowser(){
@@ -20,9 +19,9 @@ public class LoginPageLoginInvalidoTest {
         driver.get(Utils.url);
     }
     @Test
-    @Description("Sessão invalida")
-    public void CredenciaisInvalidas(){
-        loginPage InicioSessao = new loginPage(driver);
+    @Description("TC01 - Sessão inválida")
+    public void Login_Invalido(){
+        ao.ui.portal.homePage.loginPage InicioSessao = new ao.ui.portal.homePage.loginPage(driver);
         InicioSessao.credenciais("ANA NARCISO","test124");
 
         try {
@@ -32,20 +31,21 @@ public class LoginPageLoginInvalidoTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    @Description("TC02 - Sessão válida")
+    public void Login_Valido(){
+        System.out.println("Validando " + new Object() {}.getClass().getEnclosingMethod().getName());
+        ao.ui.portal.homePage.loginPage IniciarSessao = new ao.ui.portal.homePage.loginPage(driver);
+        IniciarSessao.credenciais(User, pass);
+        System.out.println(new Object() {
+        }.getClass().getEnclosingMethod().getName() + " com Sucesso!");
+    }
+
     @AfterClass
     public static void closeBrowser(){
 
         driver.quit();
-    }
-
-    @Test
-    @Description("Sessão valida")
-    public void credenciaisvalidas(){
-        System.out.println("Validando " + new Object() {}.getClass().getEnclosingMethod().getName());
-        loginPage IniciarSessao = new loginPage(driver);
-        IniciarSessao.credenciais(User, pass);
-        System.out.println(new Object() {
-        }.getClass().getEnclosingMethod().getName() + " Validadas com Sucesso!");
     }
 
 }
