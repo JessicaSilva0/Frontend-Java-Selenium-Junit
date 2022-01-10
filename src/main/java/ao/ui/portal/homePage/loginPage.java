@@ -13,9 +13,14 @@ public class loginPage extends PageObjects {
     By pswd = By.id("j_password");
     By btnLogin = By.id("btnLoginDC");
 
-    //metodos
+    /* Refatorando o método a fim de enxugar a ação uma vez pelo metodo credenciais.
     public void setUserName(String utilizador){driver.findElement(userName).sendKeys(utilizador);}
     public void setPswd(String password){driver.findElement(pswd).sendKeys(password);}
     public void setBtnLogin(){driver.findElement(btnLogin).click();}
-
+    */
+    public void credenciais(String userNam, String password) {
+        driver.findElement(userName).sendKeys(userNam);
+        driver.findElement(pswd).sendKeys(password);
+        driver.findElement(btnLogin).click();
+    }
 }

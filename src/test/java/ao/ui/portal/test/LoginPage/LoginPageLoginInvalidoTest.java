@@ -19,9 +19,7 @@ public class LoginPageLoginInvalidoTest {
     @Test
     public void CredenciaisInvalidas(){
         loginPage InicioSessao = new loginPage(driver);
-        InicioSessao.setUserName("ANA NARCISO");
-        InicioSessao.setPswd("7485599");
-        InicioSessao.setBtnLogin();
+        InicioSessao.credenciais("ANA NARCISO","test124");
 
         try {
             driver.findElement(By.id("j_username"));
@@ -32,6 +30,7 @@ public class LoginPageLoginInvalidoTest {
     }
     @AfterClass
     public static void closeBrowser(){
+
         driver.quit();
     }
 }

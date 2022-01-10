@@ -25,13 +25,13 @@ public class IRTdAM2Test {
 
     @BeforeClass
     public static void AbrirNavegador(){
-        String oi = driver.getTitle();
         driver.manage().window().maximize();
         driver.get(Utils.url);
-        loginPage novoLogin    = new loginPage(driver);
-        novoLogin.setUserName(Utils.nifRepresentante);
-        novoLogin.setPswd(Utils.senhaRepresentante);
-        novoLogin.setBtnLogin();
+        loginPage novoLogin = new loginPage(driver);
+        novoLogin.loginValidUser(Utils.nifRepresentante, Utils.senhaRepresentante);
+       // novoLogin.setUserName(Utils.nifRepresentante);
+       // novoLogin.setPswd(Utils.senhaRepresentante);
+       // novoLogin.setBtnLogin();
     }
 
     @Test
