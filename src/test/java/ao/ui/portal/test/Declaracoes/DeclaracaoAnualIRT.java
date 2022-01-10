@@ -1,11 +1,11 @@
 package ao.ui.portal.test.Declaracoes;
 
-import ao.ui.portal.declaracoes.irt;
+import ao.ui.portal.declaracoes.DeclaracaoIRT;
 import ao.ui.portal.homePage.loginPage;
-import ao.ui.portal.homePage.frmRepresentations;
+import ao.ui.portal.homePage.EmpresasInstituicoesContribuinte;
 import ao.ui.utils.Utils;
+import jdk.jfr.Description;
 import org.apache.commons.io.FileUtils;
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -19,8 +19,10 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import static ao.ui.portal.Application.driver;
+import static org.hamcrest.core.Is.is;
 
-public class IRTdAM2Test {
+
+public class DeclaracaoAnualIRT {
 
 
     @BeforeClass
@@ -32,20 +34,17 @@ public class IRTdAM2Test {
     }
 
     @Test
-    public void CriarDeclaracaoAnualIRT() throws Exception{
-        frmRepresentations representations = new frmRepresentations(driver);
-        representations.setButtonSelect();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        irt consulta = new irt(driver);
-        consulta.setMenuDeclaracoes();
-        consulta.setSubmenuIRT();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        consulta.setOpcaoDeclaracaoAnual();
-        consulta.setBtnCriarDeclaracao();
+    @Description("Criar nova Declaracao Anual IRT Grupo A")
+    public void IRT_GrupoA() throws Exception{
+        EmpresasInstituicoesContribuinte representante = new EmpresasInstituicoesContribuinte(driver);
+        representante.selecionaEmpresa(driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS));
+        DeclaracaoIRT declaracaoIRTGroupA = new DeclaracaoIRT(driver);
+        declaracaoIRTGroupA.DeclaracoesIRT();
+        declaracaoIRTGroupA.CriarDeclaracao();
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("j_id_94:j_id_ai")));
-        consulta.setBtnConfirmar();
-        consulta.setBtnGravar();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("j_id_96:j_id_ak")));
+        declaracaoIRTGroupA.DeclaracaoAnualIRT();
+        //declaracaoIRTGroupA.setBtnGravar();
 
 
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
