@@ -28,10 +28,7 @@ public class IRTdAM2Test {
         driver.manage().window().maximize();
         driver.get(Utils.url);
         loginPage novoLogin = new loginPage(driver);
-        novoLogin.loginValidUser(Utils.nifRepresentante, Utils.senhaRepresentante);
-       // novoLogin.setUserName(Utils.nifRepresentante);
-       // novoLogin.setPswd(Utils.senhaRepresentante);
-       // novoLogin.setBtnLogin();
+        novoLogin.credenciais(Utils.nifRepresentante, Utils.senhaRepresentante);
     }
 
     @Test
