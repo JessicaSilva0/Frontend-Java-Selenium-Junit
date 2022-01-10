@@ -2,6 +2,9 @@ package ao.ui.portal;
 
 import ao.ui.utils.Utils;
 import ao.ui.portal.Annotations.Main;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -12,5 +15,6 @@ public class Application {
         System.setProperty("Webdriver.chrome.driver", Utils.CHROME_DRIVER_LOCATION);
         driver.manage().window().maximize();
         driver.get(Utils.url);
+
     }
 }

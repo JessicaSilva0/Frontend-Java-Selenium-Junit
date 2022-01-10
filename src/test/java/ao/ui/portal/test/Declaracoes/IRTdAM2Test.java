@@ -25,6 +25,7 @@ public class IRTdAM2Test {
 
     @BeforeClass
     public static void AbrirNavegador(){
+        String oi = driver.getTitle();
         driver.manage().window().maximize();
         driver.get(Utils.url);
         loginPage novoLogin    = new loginPage(driver);
