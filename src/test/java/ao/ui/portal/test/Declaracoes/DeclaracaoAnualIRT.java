@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import static ao.ui.portal.Application.driver;
 
-public class declaracaoIRT {
+public class DeclaracaoAnualIRT {
 
     @BeforeClass
     public static void AbrirNavegador(){
