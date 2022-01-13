@@ -1,11 +1,11 @@
 package ao.ui.portal.test.Declaracoes;
 
-import ao.ui.portal.declaracoes.DeclaracaoIRT;
 import ao.ui.portal.homePage.loginPage;
 import ao.ui.portal.homePage.EmpresasInstituicoesContribuinte;
 import ao.ui.utils.Utils;
 import jdk.jfr.Description;
 import org.apache.commons.io.FileUtils;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -17,13 +17,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
 import static ao.ui.portal.Application.driver;
-import static org.hamcrest.core.Is.is;
 
-
-public class DeclaracaoAnualIRT {
-
+public class declaracaoIRT {
 
     @BeforeClass
     public static void AbrirNavegador(){
@@ -35,10 +31,10 @@ public class DeclaracaoAnualIRT {
 
     @Test
     @Description("Criar nova Declaracao Anual IRT Grupo A")
-    public void IRT_GrupoA() throws Exception{
+    public void IRT_GrupoA() {
         EmpresasInstituicoesContribuinte representante = new EmpresasInstituicoesContribuinte(driver);
         representante.selecionaEmpresa(driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS));
-        DeclaracaoIRT declaracaoIRTGroupA = new DeclaracaoIRT(driver);
+        ao.ui.portal.declaracoes.DeclaracaoIRT declaracaoIRTGroupA = new ao.ui.portal.declaracoes.DeclaracaoIRT(driver);
         declaracaoIRTGroupA.DeclaracoesIRT();
         declaracaoIRTGroupA.CriarDeclaracao();
         WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -56,9 +52,9 @@ public class DeclaracaoAnualIRT {
     }
 
 
-   //@AfterClass
- //public static void fecharNavegador(){
-   //   driver.quit();
-  // }
+   @AfterClass
+ public static void fecharNavegador(){
+      driver.quit();
+   }
 
 }
