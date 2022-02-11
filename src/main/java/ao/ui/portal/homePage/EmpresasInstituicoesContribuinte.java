@@ -13,6 +13,5 @@ public class EmpresasInstituicoesContribuinte extends PageObjects {
     By buttonSelect = By.xpath("//*[@id=\"frmRepresentations:dtRepresentation:5:btnSelect\"]");
 
     public void selecionaEmpresa(WebDriver.Timeouts timeouts)
-    {driver.findElement(buttonSelect).click();
-    }
+    {driver.findElement(buttonSelect).click();}
 }
